@@ -42,22 +42,24 @@ class GoldenTime():
     def golden_survival(self, min_distance):
         min_speed    = round((min_distance / 16.67), 4) # m/s
         max_speed    = round((min_distance / 27.78), 4) # m/s
-        min_survival = True
-        max_survival = True
-        print(f'\n{min_speed} is the amount of time it will take going on the minimum speed limit')
-        print(f'{max_speed} is the amount of time it will take going on the maximum speed limit\n')
+        print(f'\n{min_speed} seconds is the amount of time it will take going on the minimum speed limit')
+        print(f'{max_speed} seconds is the amount of time it will take going on the maximum speed limit\n')
         for i in self.illness:
+            print(f'\nTesting {i}\n')
+            min_survival = True
+            max_survival = True
             if self.illness[i] < min_speed:
-                print(f'{i} failed the minimum speed')
+                print(f'{i} FAILED the minimum speed')
                 min_survival = False
+            else: print(f'{i} PASSED the minimum speed')
             if self.illness[i] < max_speed:
-                print(f'{i} failed the max_speed')
+                print(f'{i} FAILED the max_speed')
                 max_survival = False
-            else: print(f'{i} passed both test!')
-        if min_survival is True and max_survival is True:
-            print('\nall common illnesses are survivable!')
+            else: print(f'{i} PASSED the minimum speed')
+            if min_survival == True and max_survival == True: print(f'{i} passed both test!')
+
+        if min_survival == True and max_survival == True: print('\nall common illnesses are survivable!')
         else: print('\nthere were some illnesses that failed either or both minimum and maximum speed.')
-        return min_survival, max_survival
 
 SimulatedRoads = { # Distances of each node from their adjacent nodes.
     'A' : [('B', 100), ('C', 150), ('D', 800)],
